@@ -10,7 +10,7 @@ export default function Posventa() {
         </div>
 
         <div className='flex mx-10 md:mx-52'>
-            <img className=' w-[150px] md:w-[400px]' src="img/callme.png" alt="" />
+            <img className=' w-[150px] md:w-[400px]' src="/img/callme.png" alt="" />
             <div className=' flex flex-col justify-center mx-2 md:mx-5'>
                 <div className=' flex flex-col items-center'>
                     <h1 className='text-center text-[15px] md:text-[25px] my-2 font-semibold'>¡LLAMANOS!</h1>
@@ -19,11 +19,11 @@ export default function Posventa() {
                 <div>
                     <h2 className='text-[10px] md:text-[20px] my-2 font-semibold'>Comunicate con uno de nuestros asesor</h2>
                     <div className='flex my-2'>
-                        <img className='w-[20px] md:w-[30px]' src="img/phone-calling-rounded-svgrepo-com.svg" alt="" /> 
+                        <img className='w-[20px] md:w-[30px]' src="/img/phone-calling-rounded-svgrepo-com.svg" alt="" /> 
                         <p className='text-[12px] md:text-[20px] mx-2'>(602) 669-6969</p>
                     </div>
                     <div className=' flex my-2'>
-                        <img className='w-[20px] md:w-[30px]' src="img/iphone-style-smartphone-material-svgrepo-com.svg" alt="" />
+                        <img className='w-[20px] md:w-[30px]' src="/img/iphone-style-smartphone-material-svgrepo-com.svg" alt="" />
                         <p className='text-[12px] md:text-[20px] mx-2'>+57 301 3585724</p>
                     </div>
                 </div>

@@ -78,7 +78,7 @@ function Header() {
     >
       <div className="flex items-center justify-between ">
         <a href="/">
-          <img src="img/logo.png" alt="logo-industriasfranky" className=" w-36 2xl:w-44" />
+          <img src="/img/logo.png" alt="sbs logo" className=" w-36 2xl:w-44" />
         </a>
         <img className= {`w-12 md:hidden ${isRotated ? 'rotate-90 transition-transform duration-300' : 'transition-transform duration-300 ' }`} src="img/bars-svgrepo-com.svg" alt="" onClick={toggleMenu} />
       </div>
