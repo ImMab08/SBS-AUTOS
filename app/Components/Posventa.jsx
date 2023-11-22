@@ -17,7 +17,7 @@ export default function Posventa() {
                     <p className=' text-[12px] md:text-[20px]'>De la mano de nuestros clientes las 24 horas del día. Atendemos cualquier consulta, emergencia o duda que tengas sobre tu vehículo.</p>
                 </div>
                 <div>
-                    <h2 className='text-[10px] md:text-[20px] my-2 font-semibold'>Comunicate con uno de nuestros asesor</h2>
+                    <h2 className='text-[10px] md:text-[20px] my-2 font-semibold'>Comunicate con uno de nuestros asesores</h2>
                     <div className='flex my-2'>
                         <img className='w-[20px] md:w-[30px]' src="/img/phone-calling-rounded-svgrepo-com.svg" alt="" /> 
                         <p className='text-[12px] md:text-[20px] mx-2'>(602) 669-6969</p>
