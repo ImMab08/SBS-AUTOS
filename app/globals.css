@@ -1,3 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #565656;
+}
+
+/* DARK MODE */
+body {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: #333;
+  color: #fff;
+}
+
+
+.h1-home {
+  line-height: 4rem;
+}
+.h2-home {
+  line-height: 3rem;
+  font-style: italic;
+}
+
+.custom-shape-divider-bottom-1700716736 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1700716736 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 90px;
+}
+
+.custom-shape-divider-bottom-1700716736 .shape-fill {
+    fill: #FFFFFF;
+}
+.custom-shape-divider-bottom-1700716736 .fill-black {
+  fill: #000000;
+}
+.fill-black {
+  fill: #000000;
+}
+
+
+.custom-shape-divider-top-1700782695 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1700782695 svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 50px;
+}
+
+.custom-shape-divider-top-1700782695 .shape-fill {
+  fill: #ffffff;
+}
+
+.custom-shape-divider-top-1700782695 .fill-black {
+  fill: #000000;
+}

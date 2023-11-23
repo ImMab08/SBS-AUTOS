@@ -5,6 +5,25 @@ import React, { useEffect, useRef, useState } from "react";
 import '../globals.css'
 
 function Header() {
+  const [theme, setTheme] = useState(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      return 'dark';
+    }
+
+    return 'light';
+  })
+  const handleChangeTheme = () => {
+    setTheme(prevTheme => prevTheme ===  "light" ? "dark" : "light")
+  }
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.querySelector('html').classList.add("dark")
+    } else {
+      document.querySelector('html').classList.remove("dark")
+    }
+  }, [theme])
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isRotated, setIsRotated] = useState(false);
 
@@ -17,69 +36,14 @@ function Header() {
     setIsMenuOpen(!isMenuOpen);
     setIsRotated(!isRotated)
   };
-  const menuBackdropRef = useRef(null);
   const headerRef = useRef(null);
-
-  useEffect(() => {
-    const listItem = document.querySelectorAll("#landing-header li");
-
-    listItem.forEach((item) => {
-      item.addEventListener("mouseenter", () => {
-        const { left, top, width, height } = item.getBoundingClientRect();
-
-        menuBackdropRef.current.style.setProperty("--left", `${left}px`);
-        menuBackdropRef.current.style.setProperty("--top", `${top}px`);
-        menuBackdropRef.current.style.setProperty("--width", `${width}px`);
-        menuBackdropRef.current.style.setProperty("--height", `${height}px`);
-
-        menuBackdropRef.current.style.opacity = "1";
-        menuBackdropRef.current.style.visibility = "visible";
-      });
-
-      item.addEventListener("mouseleave", () => {
-        menuBackdropRef.current.style.opacity = "0";
-        menuBackdropRef.current.style.visibility = "hidden";
-      });
-    });
-  }, []);
-
-  useEffect(() => {
-    const headerEl = headerRef.current;
-
-    const observerOptions = {
-      root: null,
-      rootMargin: "0px",
-      threshold: 0.9,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        const { isIntersecting } = entry;
-        if (isIntersecting) {
-          const color = entry.target.getAttribute("data-header-color");
-          headerEl.style.color = color;
-        }
-      });
-    }, observerOptions);
-
-    const sectionElements = document.querySelectorAll(".landing-section");
-    sectionElements.forEach((section) => observer.observe(section));
-
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
-
   return (
     <header
       id="landing-header"
-      className=" bg-white p-6 2xl:p-8 md:flex md:justify-between items-center  fixed top-0 w-screen z-40 text-black xl:border-b-4"
+      className=" bg-white dark:bg-black p-5 2xl:p-8 md:flex md:justify-center  items-center text-black dark:text-white"
       ref={headerRef}
     >
-      <div className="flex items-center justify-between ">
-        <a href="/">
-          <img src="/img/logo.png" alt="sbs logo" className=" w-36 2xl:w-44" />
-        </a>
+      <div className="flex items-center">
         <img className= {`w-12 md:hidden ${isRotated ? 'rotate-90 transition-transform duration-300' : 'transition-transform duration-300 ' }`} src="img/bars-svgrepo-com.svg" alt="" onClick={toggleMenu} />
       </div>
 
@@ -97,34 +61,35 @@ function Header() {
         </nav>
       )}
 
-      <nav className="hidden md:block sm:hidden ">
-        <ul className="flex text-xl 2xl:[&>li>a]:text-2xl [&>li>a]:font-bold [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-base [&>li>a]:inline-block [&>li>a]:px-5 [&>li>a]:py-2">
-          <li><a href="#">Inicio</a></li>
-          <li><a href="#">Vitrina</a></li>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Servicios</a></li>
-        </ul>
-      </nav>
-    
-      <nav className="">
-        <ul className="flex text-sm 2xl:[&>li>a]:text-xl [&>li>a]:font-bold [&>li>a]:transition-colors [&>li>a]:duration-500 [&>li>a]:text-current [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:text-base">
-          <li className="hidden md:block sm:hidden"><Link href={"contacto"}>Contactanos</Link></li>
-        </ul>
+      <nav className=" md:flex sm:hidden hidden">
+        <div className="flex items-center">
+          <ul className="flex [&>li>a]:font-bold [&>li>a]:text-lg [&>li>a]:inline-block [&>li>a]:mx-5 [&>li>a]:py-2">
+            <li className="transform transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black rounded-xl"><a href="">Inicio</a></li>
+            <li className="transform transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black rounded-xl"><a href="#">Disponibles</a></li>
+          </ul>
+          {theme === "dark" ? (
+              <img src="img/logo-blanco.png" className=" w-36 2xl:w-44 mx-5" alt="" />
+          ) : (
+              <img src="img/logo.png" className=" w-36 2xl:w-44 mx-5" alt="" />
+          )}
+          <ul className="flex [&>li>a]:font-bold [&>li>a]:text-lg [&>li>a]:inline-block [&>li>a]:mx-5 [&>li>a]:py-2">  
+            <li className="transform transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black rounded-xl"><Link href={"servicios"}>Servicios</Link></li>
+            <li className="transform transition-transform duration-300 ease-in-out hover:scale-110 hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black rounded-xl"><Link href={"contacto"}>Contactanos</Link></li>
+          </ul>
+          
+        </div>
+
       </nav>
 
-      <div
-        id="menu-backdrop"
-        className={`
-          
-          absolute bg-gray-200 backdrop-blur-lg rounded
-          translate-x-[var(--left)] translate-y-[var(--top)]
-          left-0 top-0
-          w-[var(--width)] h-[var(--height)]
-          transition-all duration-100
-          ease-in-out opacity-0 -z-10
-        `}
-        ref={menuBackdropRef}
-      ></div>
+      <div className="flex items-center absolute z-10 right-8">
+          <button className="" onClick={handleChangeTheme}>
+            {theme === "dark" ? (
+              <img src="img/sun.svg" className="w-8" alt="" />
+            ) : (
+              <img src="img/moon.svg" className="w-8" alt="" />
+            )}
+          </button>
+        </div>
     </header>
   );
 }
