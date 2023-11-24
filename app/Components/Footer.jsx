@@ -4,10 +4,10 @@ import React, { useEffect, useRef, useState } from "react";
 
 function Footer() {
     const [theme, setTheme] = useState(() => {
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          return 'dark';
+        if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return 'dark';
         }
-    
+        
         return 'light';
       })
       const handleChangeTheme = () => {
