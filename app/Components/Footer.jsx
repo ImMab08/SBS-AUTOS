@@ -72,7 +72,7 @@ function Footer() {
             </div>
             <hr className="my-6 dark:border-[.4px] sm:mx-auto lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between">
-                    <span className="text-sm text-gray-400 dark:text-white sm:text-center">© 2023 <a href="https://flowbite.com/" className="hover:underline">SBS AUTOS™</a>. All Rights Reserved.
+                    <span className="text-sm text-gray-400  dark:text-white sm:text-center">© 2023 <a href="https://flowbite.com/" className="hover:underline">SBS AUTOS™</a>. All Rights Reserved.
                     </span>
                 </div>
             </div>
